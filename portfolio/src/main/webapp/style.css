@@ -12,15 +12,46 @@ body {
 }
 
 div {
-  width: 300px;
+  width: 500px;
   border: 15px solid cyan;
   padding: 50px;
   margin: 20px;
 }
+/* CSS styling to allow image gallery and show of description on hover*/
+div.gallery {
+  position: relative;
+  width: 180px;
+  margin: 10px;
+  border: 1px solid #ccc;
+  float: left;
+}
+
+div.gallery:hover div.gallery p{
+  border: 1px solid rgb(32, 32, 32);
+}
+
+div.gallery img {
+  width: 100%;
+  height: auto;
+}
+
+div.gallery p {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(29, 106, 154, 0.72);
+  color: #fff;
+  visibility: hidden;
+  opacity: 0;
+}
+
 
 #info-footer {
     margin-left: auto;
     margin-right: auto;
+    margin-top: 15;
     text-align: center;
 }
 
