@@ -18,33 +18,30 @@ body {
 /* CSS styling to allow image gallery and show of description on hover*/
 .gallery {
   position: relative;
-  width: 360px;
+  width: 380px;
   margin: 10px;
-  border: 1px solid #ccc;
   float: left;
 }
 
+
+.gallery_description {
+  position: absolute;
+  bottom: 0;
+  background: rgba(16, 16, 16, 0.5);
+  color: #fff;
+  opacity: 0;
+  font-size: 20px;
+  padding: 20px;
+  text-align: center;
+}
+
 .gallery:hover .gallery_description{
-  visibility: visible;
-  border: 2px solid rgb(32, 32, 32);
+  opacity: 1;
 }
 
 .gallery img {
   width: 100%;
 }
-
-.gallery_description {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba(29, 106, 154, 0.72);
-  color: #fff;
-  visibility: hidden;
-  opacity: 0;
-}
-
 
 #info-footer {
     margin-left: auto;
