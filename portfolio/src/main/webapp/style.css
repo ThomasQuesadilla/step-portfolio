@@ -18,7 +18,7 @@ body {
 /* CSS styling to allow image gallery and show of description on hover*/
 .gallery {
   position: relative;
-  width: 180px;
+  width: 360px;
   margin: 10px;
   border: 1px solid #ccc;
   float: left;
