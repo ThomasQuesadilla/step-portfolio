@@ -4,21 +4,17 @@ body {
 #content {
   margin-left: auto;
   margin-right: auto;
-  width: 650px;
+  width: 750px;
+  border: 15px solid cyan;
+  padding: 50px;
 }
 
 #greeting-container {
   margin-top: 20px;
 }
 
-div {
-  width: 500px;
-  border: 15px solid cyan;
-  padding: 50px;
-  margin: 20px;
-}
 /* CSS styling to allow image gallery and show of description on hover*/
-div.gallery {
+.gallery {
   position: relative;
   width: 180px;
   margin: 10px;
@@ -26,16 +22,15 @@ div.gallery {
   float: left;
 }
 
-div.gallery:hover div.gallery p{
+.gallery:hover .gallery_description{
   border: 1px solid rgb(32, 32, 32);
 }
 
-div.gallery img {
+.gallery img {
   width: 100%;
-  height: auto;
 }
 
-div.gallery p {
+.gallery_description {
   position: absolute;
   top: 0;
   bottom: 0;
