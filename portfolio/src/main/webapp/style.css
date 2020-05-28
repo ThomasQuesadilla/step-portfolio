@@ -1,14 +1,46 @@
 body {
-  font-family: Verdana, Geneva, Tahoma, sans-serif
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: rgb(240, 240, 240);
+  background-image: url(images/hard-rock-cafe-florida.jpg);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 }
+
+#navigation-bar ul {
+  margin: 0;
+  padding: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  position: fixed;
+  list-style-type: none;
+  overflow: hidden;
+  background-color: #444
+}
+#navigation-bar li {
+  float:left;
+}
+#navigation-bar a {
+  display: block;
+  padding: 20px;
+  text-align: center;
+  color: white;
+  text-decoration: none;
+}
+#navigation-bar a:hover {
+  background-color: #111;
+}
+
 #content {
+  margin-top: 5%;
   margin-left: auto;
   margin-right: auto;
   width: 810px;
-  border: 15px solid cyan;
+  border: 1px solid black;
   padding-left: 50px;
   padding-right: 50px;
   padding-bottom: 20px;
+  background: rgba(32, 32, 32, 0.5);
 }
 
 #greeting-container {
@@ -29,7 +61,7 @@ body {
   position: absolute;
   bottom: 0;
   background: rgba(16, 16, 16, 0.5);
-  color: #fff;
+  color: rgb(240, 240, 240);
   opacity: 0;
   font-size: 20px;
   padding: 20px;
