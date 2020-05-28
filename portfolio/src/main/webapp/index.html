@@ -1,78 +1,83 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Thomas' Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
-  </head>
-  <body>
-    <div id="navigation-bar">
+  <meta charset="UTF-8">
+  <title>Thomas' Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
+  <div id="nav-bar">
+    <nav>
       <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#about me">About Me</a></li>
+        <li><a href="#home">Home</a>
+        <li><a href="about-me.html">About Me</a>
+        <li id="dropdown">
+          <a href="javascript:void(0)" id="dropdown-btn">Projects</a>
+          <div id="dropdown-content">
+            <a href="#">MP3 and Me</a>
+            <a href="#">Pill Safety</a>
+            <a href="#">ERE</a>
+            <a href="#">Blacklisted</a>
+          </div>
+        </li>
       </ul>
+    </nav>
+  </div>
+  <div id="content">
+    <h1>Thomas' Portfolio</h1>
+    <h5>Welcome to my Portfolio page! Here you'll find everything about Thomas Quintanilla, so have fun exploring!</h5>
+    <h3> Who Am I? </h3>
+    <p> My name is Thomas Quintanilla. I'm a rising junior at Duke Univeristy and a current STEP intern at Google. 
+      I come from a family of immigrants who moved from Colombia to Elizabeth, New Jersey in 1999. 
+      I was born in the city of Edison, and 5 years after moved to Pembroke Pines, Florida, which I now claim as my home. 
+      In fact, I sometimes forget I was born in New Jersey and not Florida.
+    </p>
+    <p>
+      I think what makes me unique is the good vibes I can bring to any group.
+      Whether its through my stupid shenanigans or uplifting conversations, I can usually turn around the foul moods of almost any group I'm a part of.
+      Honestly, I'm not entirely sure where it originally came from, but I feel like my past experiences helped me develop a sense of empathy with those I'm close with, so I naturally never want to see anyone down or upset.
+    </p>  
+    <h3> Projects </h3>
+    <p>
+      ERE
+      <ul>
+        <li> iOS application that mitigates the issue of distracted multitasking by setting early deadlines for you.
+      </ul>
+      Blacklisted
+      <ul>
+        <li> Web app and Chrome extension design to protect victims of trauma from triggering content by censoring keywords.
+      </ul>
+      Pill Safety
+      <ul>
+        <li> Device to reduce the opioid epidemic by using visual recognition to unlock prescription pill containers.
+      </ul>
+      MP3 and Me
+      <ul>
+        <li> Raspberry Pi powered gesture-controlled music player that could read hands to execute commands such as pause, play, volume up/down, skip, and previous. 
+      </ul>
+    </p>
+    <div class = "gallery">
+      <img src = "images/old_san_juan.jpg" alt = "Old San Juan" width="360" height="360">
+      <p class = "gallery_description"> A shot I took of Old San Juan on my visit to Puerto Rico during Spring Break</p>
     </div>
-    <div id="content">
-      <h1>Thomas' Portfolio</h1>
-      <h5>Welcome to my Portfolio page! Here you'll find everything about Thomas Quintanilla, so have fun exploring!</h5>
-      <h3> Who Am I? </h3>
-      <p> My name is Thomas Quintanilla. I'm a rising junior at Duke Univeristy and a current STEP intern at Google. 
-        I come from a family of immigrants who moved from Colombia to Elizabeth, New Jersey in 1999. 
-        I was born in the city of Edison, and 5 years after moved to Pembroke Pines, Florida, which I now claim as my home. 
-        In fact, I sometimes forget I was born in New Jersey and not Florida.
-      </p>
-      <p>
-        I think what makes me unique is the good vibes I can bring to any group.
-        Whether its through my stupid shenanigans or uplifting conversations, I can usually turn around the foul moods of almost any group I'm a part of.
-        Honestly, I'm not entirely sure where it originally came from, but I feel like my past experiences helped me develop a sense of empathy with those I'm close with, so I naturally never want to see anyone down or upset.
-      </p>  
-      <h3> Projects </h3>
-      <p>
-        ERE
-        <ul>
-          <li> iOS application that mitigates the issue of distracted multitasking by setting early deadlines for you.</li>
-        </ul>
-        Blacklisted
-        <ul>
-          <li> Web app and Chrome extension design to protect victims of trauma from triggering content by censoring keywords.</li>
-        </ul>
-        Pill Safety
-        <ul>
-          <li> Device to reduce the opioid epidemic by using visual recognition to unlock prescription pill containers.</li>
-        </ul>
-        MP3 and Me
-        <ul>
-          <li> Raspberry Pi powered gesture-controlled music player that could read hands to execute commands such as pause, play, volume up/down, skip, and previous. </li>
-        </ul>
-      </p>
-      <div class = "gallery">
-        <img src = "images/old_san_juan.jpg" alt = "Old San Juan" width="360" height="360">
-        <p class = "gallery_description"> A shot I took of Old San Juan on my visit to Puerto Rico during Spring Break</p>
-      </div>
-      <div class = "gallery">
-        <img src = "images/colombia_banner.jpg" alt = "Colombia With Cousins" width="360" height="360">
-        <p class = "gallery_description"> A group photo with my cousins and I. This was my only visit to Colombia and the only time my generation of the family (17 cousins) all got together.</p>
-      </div>
-      <div class = "gallery">
-        <img src = "images/CSSI.jpg" alt = "CSSI 2018" width="360" height="360">
-        <p class = "gallery_description"> My team and I after our presentation to the PIT office for CSSI 2018.</p>
-      </div>
-      <div class = "gallery">
-        <img src = "images/bench_burning.jpg" alt = "Duke Bench Burning" width="360" height="360">
-        <p class = "gallery_description"> After a blowout against UNC, Duke students took to Abele Quad to continue the tradition and burn some benches.</p>
-      </div>
-        <br>
-      <p> 
-        I have a love-hate relationship of photography. 
-        I hate photos taken of me, unless it's with friends or capturing a special moment, and I especially hate family photos (except that one specific photo with all of my cousins). 
-        But taking photos is a hobby I've considered picking up for a long time, since I enjoy being the one behind the camera.
-        This world is filled with beautiful things, and I feel like without photography, we wouldn't truly see what the world has to offer.
-        Natural landscapes, abstract stills, and candid shots are just a few of the many things I love photographing.
-      </p>
+    <div class = "gallery">
+      <img src = "images/colombia_banner.jpg" alt = "Colombia With Cousins" width="360" height="360">
+      <p class = "gallery_description"> A group photo with my cousins and I. This was my only visit to Colombia and the only time my generation of the family (17 cousins) all got together.</p>
     </div>
-  </body>
+    <div class = "gallery">
+      <img src = "images/CSSI.jpg" alt = "CSSI 2018" width="360" height="360">
+      <p class = "gallery_description"> My team and I after our presentation to the PIT office for CSSI 2018.</p>
+    </div>
+    <div class = "gallery">
+      <img src = "images/bench_burning.jpg" alt = "Duke Bench Burning" width="360" height="360">
+      <p class = "gallery_description"> After a blowout against UNC, Duke students took to Abele Quad to continue the tradition and burn some benches.</p>
+    </div>
+      <br>
+    <p> 
+      I have a love-hate relationship of photography. 
+      I hate photos taken of me, unless it's with friends or capturing a special moment, and I especially hate family photos (except that one specific photo with all of my cousins). 
+      But taking photos is a hobby I've considered picking up for a long time, since I enjoy being the one behind the camera.
+      This world is filled with beautiful things, and I feel like without photography, we wouldn't truly see what the world has to offer.
+      Natural landscapes, abstract stills, and candid shots are just a few of the many things I love photographing.
+    </p>
+  </div>
   <footer id="info-footer">
       <a href = "https://www.linkedin.com/in/thomas-quintanilla">
       <img id = "footer-image" alt="https://www.linkedin.com/in/thomas-quintanilla/" src="/images/linkedin_logo.png" width="64" height="64">
