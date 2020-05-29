@@ -1,8 +1,8 @@
 body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: rgb(240, 240, 240);
-  background-size: 100% 100%;
-  background-image: url(images/hard-rock-cafe-florida.jpg);
+  background-size: cover;
+  height: 100%;
   background-repeat: no-repeat;
 }
 
@@ -83,7 +83,7 @@ body {
 
 .gallery_description {
   bottom: 0;
-  background: rgba(16, 16, 16, 0.5);
+  background: rgba(16, 16, 16, 0.65);
   color: rgb(240, 240, 240);
   opacity: 0;
   font-size: 20px;
