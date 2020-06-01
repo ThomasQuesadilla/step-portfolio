@@ -15,14 +15,10 @@
 /**
  * Adds a random greeting to the page.
  */
-function addRandomGreeting() {
-  const greetings =
-      ['Hello there', 'General Kenobi, you are a bold one', 'Did you ever hear the tragedy of Darth Plagueis the Wise?', 'It\'s over Anakin, I have the high ground'];
-
-  // Pick a random greeting.
-  const greeting = greetings[Math.floor(Math.random() * greetings.length)];
-
-  // Add it to the page.
-  const greetingContainer = document.getElementById('greeting-container');
-  greetingContainer.innerText = greeting;
+function getComments() {
+  fetch('/data').then(response => response.text()).then(comments => {
+    
+    const commentContainer = document.getElementById('comments-container');
+    commentContainer.innerText = comments;
+  });
 }
