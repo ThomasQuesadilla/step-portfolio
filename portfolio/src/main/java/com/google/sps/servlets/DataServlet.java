@@ -26,12 +26,28 @@ import java.util.Arrays;
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
   
-  ArrayList<String> comments = new ArrayList<>(Arrays.asList("Yo this website is soooooooo cool", "That's cap bro this website is trash", "nah bro youre trash")); 
+  private ArrayList<String> comments = new ArrayList<>(); 
   
-  @Override public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException { 
+  @Override 
+  public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException { 
     response.setContentType("text/html;"); 
     Gson gson = new Gson(); 
     String json = gson.toJson(comments); 
     response.getWriter().println(json); 
+  }
+
+  @override
+  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    String text = getParameter(request, "text-input", "");
+    comments.add(text);
+
+  }
+
+  private String getParameter(HttpServletRequest request, String name, String defaultValue) {
+    String value = request.getParameter(name);
+    if (value == null) {
+      value = defaultValue;
+    }
+    return value;
   }
 }
