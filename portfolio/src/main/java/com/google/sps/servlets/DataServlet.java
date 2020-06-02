@@ -36,11 +36,11 @@ public class DataServlet extends HttpServlet {
     response.getWriter().println(json); 
   }
 
-  @override
+  @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    String text = getParameter(request, "text-input", "");
+    String text = getParameter(request, "text-input", "None");
     comments.add(text);
-
+    response.sendRedirect("/index.html");
   }
 
   private String getParameter(HttpServletRequest request, String name, String defaultValue) {

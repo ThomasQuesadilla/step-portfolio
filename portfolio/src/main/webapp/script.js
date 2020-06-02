@@ -19,6 +19,8 @@ function getComments() {
   fetch('/data').then(response => response.json()).then(comments => {
 
     const commentContainer = document.getElementById('comments-container');
-    commentContainer.innerHTML = comments[0] + "<br>" + comments[1] + "<br>" + comments[2];
+    for (i = 0; i < comments.length; i++) {
+      commentContainer.innerHTML += comments[i] + "<br><br>"
+    }
   });
 }
