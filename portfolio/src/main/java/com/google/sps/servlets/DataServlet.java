@@ -14,22 +14,46 @@
 
 package com.google.sps.servlets;
 
+import com.google.appengine.api.datastore.DatastoreService;
+import com.google.appengine.api.datastore.DatastoreServiceFactory;
+import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.PreparedQuery;
+import com.google.appengine.api.datastore.Query;
+import com.google.appengine.api.datastore.Query.SortDirection;
+import com.google.sps.data.Comment;
+import com.google.gson.Gson;
 import java.io.IOException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.Arrays;
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
   
-  private ArrayList<String> comments = new ArrayList<>(); 
+  private DatastoreService datastore;
+  @Override
+  public void init() {
+    datastore = DatastoreServiceFactory.getDatastoreService();
+  }
   
   @Override 
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException { 
+    Query query = new Query("Comment").addSort("timestamp", SortDirection.DESCENDING);
+    PreparedQuery results = datastore.prepare(query);
+
+    ArrayList<Comment> comments = new ArrayList<>();
+    for (Entity entity: results.asIterable()) {
+      long id = entity.getKey().getId();
+      long timestamp = (long) entity.getProperty("timestamp");
+      String message = (String) entity.getProperty("message");
+
+      Comment comment = new Comment(id, message, timestamp);
+      comments.add(comment);
+    }
+
     response.setContentType("text/html;"); 
     Gson gson = new Gson(); 
     String json = gson.toJson(comments); 
@@ -39,7 +63,14 @@ public class DataServlet extends HttpServlet {
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     String text = getParameter(request, "text-input", "None");
-    comments.add(text);
+    long timestamp = System.currentTimeMillis();
+
+    Entity commentEntity = new Entity("Comment");
+    commentEntity.setProperty("message", text);
+    commentEntity.setProperty("timestamp", timestamp);
+
+    datastore.put(commentEntity);
+
     response.sendRedirect("/index.html");
   }
 

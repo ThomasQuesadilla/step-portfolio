@@ -23,7 +23,7 @@ function loadTasks() {
 }
 
 /** Creates an element that represents a task, including its delete button. */
-function createTaskElement(task) {
+function createTaskElement(task) { 
   const taskElement = document.createElement('li');
   taskElement.className = 'task';
 

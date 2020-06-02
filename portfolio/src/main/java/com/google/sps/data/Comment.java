@@ -12,15 +12,18 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-/**
- * Adds a random greeting to the page.
- */
-function getComments() {
-  fetch('/data').then(response => response.json()).then(comments => {
+package com.google.sps.data;
 
-    const commentContainer = document.getElementById('comments-container');
-    comments.forEach(comment => {
-      commentContainer.innerHTML += comment.message + "<br>";
-    })
-  });
+/** An item on a todo list. */
+public final class Comment {
+
+  private final long id;
+  private final String message;
+  private final long timestamp;
+
+  public Comment(long id, String message, long timestamp) {
+    this.id = id;
+    this.message = message;
+    this.timestamp = timestamp;
+  }
 }
