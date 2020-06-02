@@ -16,9 +16,9 @@
  * Adds a random greeting to the page.
  */
 function getComments() {
-  fetch('/data').then(response => response.text()).then(comments => {
-    
+  fetch('/data').then(response => response.json()).then(comments => {
+
     const commentContainer = document.getElementById('comments-container');
-    commentContainer.innerText = comments;
+    commentContainer.innerHTML = comments[0] + "<br>" + comments[1] + "<br>" + comments[2];
   });
 }
