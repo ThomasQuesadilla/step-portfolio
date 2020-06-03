@@ -2,69 +2,78 @@
 <meta charset="UTF-8">
 <title>Thomas' Portfolio</title>
 <style>
-  body { 
-    background-image: url(images/hard-rock-cafe-florida.jpg);
-  }
+	body {
+		background-image: url(images/hard-rock-cafe-florida.jpg);
+	}
 </style>
 <link rel="stylesheet" href="style.css">
 <script src="script.js"></script>
-<body>
-  <div id="nav-bar">
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a>
-        <li><a href="about-me.html">About Me</a>
-        <li id="dropdown">
-          <a href="javascript:void(0)" id="dropdown-btn">Projects</a>
-          <div id="dropdown-content">
-            <a href="mp3-and-me.html">MP3 and Me</a>
-            <a href="#">Pill Safety</a>
-            <a href="#">ERE</a>
-            <a href="#">Blacklisted</a>
-          </div>
-        </li>
-      </ul>
-    </nav>
-  </div>
-  <div id="content">
-    <h1>Thomas Quintanilla</h1>
-    <p> Welcome! My name is Thomas Quintanilla. I'm a rising junior at Duke University and a current STEP intern at Google. 
-      I'm a results driven programmer who strives to build applications that will suit the needs of everyone.
-      My work revolves mostly around object oriented programming and applications for commodity use.
-      My main goal though is to eventually work on VR/AR and help develop the field so that it may be more practical for the average consumer to use.
-    </p>
-    <p>
-      What makes me unique is the good vibes I can bring to any group.
-      Whether its through my stupid shenanigans or uplifting conversations, I can usually turn around the foul moods of almost any group I'm a part of.
-      Honestly, I'm not entirely sure where it originally came from, but I feel like my past experiences helped me develop a sense of empathy with those I'm close with, so I naturally never want to see anyone down or upset.
-    </p>  
-    <h3> Projects </h3>
-    <p>
-      ERE
-      <ul>
-        <li> iOS application that mitigates the issue of distracted multitasking by setting early deadlines for you.
-      </ul>
-      Blacklisted
-      <ul>
-        <li> Web app and Chrome extension design to protect victims of trauma from triggering content by censoring keywords.
-      </ul>
-      Pill Safety
-      <ul>
-        <li> Device to reduce the opioid epidemic by using visual recognition to unlock prescription pill containers.
-      </ul>
-      MP3 and Me
-      <ul>
-        <li> Raspberry Pi powered gesture-controlled music player that could read hands to execute commands such as pause, play, volume up/down, skip, and previous. 
-      </ul>
-    </p>
-  </div>
+
+<body onload="getComments()">
+	<div id="nav-bar">
+		<nav>
+			<ul>
+				<li><a href="index.html">Home</a>
+				<li><a href="about-me.html">About Me</a>
+				<li id="dropdown">
+					<a href="javascript:void(0)" id="dropdown-btn">Projects</a>
+					<div id="dropdown-content">
+						<a href="mp3-and-me.html">MP3 and Me</a>
+						<a href="#">Pill Safety</a>
+						<a href="#">ERE</a>
+						<a href="#">Blacklisted</a>
+					</div>
+				</li>
+			</ul>
+		</nav>
+	</div>
+	<div id="content">
+		<h1>Thomas Quintanilla</h1>
+		<p> Weclome! My name is Thomas Quintanilla. I'm a rising junior at Duke Univeristy and a current STEP intern at
+			Google.
+			I'm a results driven programmer who strives to build applications that will suit the needs of everyone.
+			My work revolves mostly around object oriented programming and applications for commodity use.
+			My main goal though is to eventually work on VR/AR and help develop the field so that it may be more
+			practical for the average consumer to use.
+		</p>
+		<p>
+			What makes me unique is the good vibes I can bring to any group.
+			Whether its through my stupid shenanigans or uplifting conversations, I can usually turn around the foul
+			moods of almost any group I'm a part of.
+			Honestly, I'm not entirely sure where it originally came from, but I feel like my past experiences helped me
+			develop a sense of empathy with those I'm close with, so I naturally never want to see anyone down or upset.
+		</p>
+		<h3> Projects </h3>
+		<p>
+			ERE
+			<ul>
+				<li> iOS application that mitigates the issue of distracted multitasking by setting early deadlines for
+					you.
+			</ul>
+			Blacklisted
+			<ul>
+				<li> Web app and Chrome extension design to protect victims of trauma from triggering content by
+					censoring keywords.
+			</ul>
+			Pill Safety
+			<ul>
+				<li> Device to reduce the opioid epidemic by using visual recognition to unlock prescription pill
+					containers.
+			</ul>
+			MP3 and Me
+			<ul>
+				<li> Raspberry Pi powered gesture-controlled music player that could read hands to execute commands such
+					as pause, play, volume up/down, skip, and previous.
+			</ul>
+		</p>
+		<div id="comments-container"> </div>
+	</div>
 </body>
 <footer id="info-footer">
-    <a href = "https://www.linkedin.com/in/thomas-quintanilla">
-    <img id = "footer-image" alt="https://www.linkedin.com/in/thomas-quintanilla/" src="/images/linkedin_logo.png" width="64" height="64">
+	<a href="https://www.linkedin.com/in/thomas-quintanilla">
+		<img id = "footer-image" alt="https://www.linkedin.com/in/thomas-quintanilla/" src="/images/linkedin_logo.png" width="64" height="64">
     </a>
-    <a href = "https://github.com/ThomasQuesadilla">
-    <img id = "footer-image" alt="https://www.linkedin.com/in/thomas-quintanilla/" src="/images/github_logo.png" width="64" height="64">
+		<a href="https://github.com/ThomasQuesadilla">
+			<img id = "footer-image" alt="https://www.linkedin.com/in/thomas-quintanilla/" src="/images/github_logo.png" width="64" height="64">
     </a>
 </footer>
-
