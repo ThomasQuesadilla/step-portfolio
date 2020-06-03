@@ -15,10 +15,12 @@
 /**
  * Adds a random greeting to the page.
  */
-function getComments() {
-  fetch('/data').then(response => response.json()).then(comments => {
+function getComments(maxComments) {
+  const url = "/data?maxComments=" + maxComments;
+  fetch(url).then(response => response.json()).then(comments => {
 
     const commentContainer = document.getElementById('comments-container');
+    commentContainer.innerHTML = '';
     comments.forEach(comment => {
       commentContainer.innerHTML += comment.message + "<br>";
     })

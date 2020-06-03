@@ -32,26 +32,31 @@ import java.util.Arrays;
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
-  
+  private final static int DEFAULT_NUMBER_OF_COMMENTS = 10;
   private DatastoreService datastore;
+  private int maxComments;
   @Override
   public void init() {
     datastore = DatastoreServiceFactory.getDatastoreService();
+    maxComments = DEFAULT_NUMBER_OF_COMMENTS;
   }
   
   @Override 
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException { 
     Query query = new Query("Comment").addSort("timestamp", SortDirection.DESCENDING);
     PreparedQuery results = datastore.prepare(query);
-
+    maxComments = getMaxCommentChoice(request);
+    
     ArrayList<Comment> comments = new ArrayList<>();
     for (Entity entity: results.asIterable()) {
-      long id = entity.getKey().getId();
-      long timestamp = (long) entity.getProperty("timestamp");
-      String message = (String) entity.getProperty("message");
+      if (comments.size() < maxComments) {
+        long id = entity.getKey().getId();
+        long timestamp = (long) entity.getProperty("timestamp");
+        String message = (String) entity.getProperty("message");
 
-      Comment comment = new Comment(id, message, timestamp);
-      comments.add(comment);
+        Comment comment = new Comment(id, message, timestamp);
+        comments.add(comment);
+      }
     }
 
     response.setContentType("text/html;"); 
@@ -71,7 +76,7 @@ public class DataServlet extends HttpServlet {
 
     datastore.put(commentEntity);
 
-    response.sendRedirect("/index.html");
+    response.sendRedirect("/index.html?maxComments=" + maxComments);
   }
 
   private String getParameter(HttpServletRequest request, String name, String defaultValue) {
@@ -80,5 +85,19 @@ public class DataServlet extends HttpServlet {
       value = defaultValue;
     }
     return value;
+  }
+
+  private int getMaxCommentChoice(HttpServletRequest request) {
+    String numberChoice = request.getParameter("maxComments");
+    int numberOfComments = DEFAULT_NUMBER_OF_COMMENTS;
+    try {
+      numberOfComments = Integer.parseInt(numberChoice);
+    } catch (NumberFormatException e) {
+      System.err.println("Could not convert to int: " + numberChoice);
+    }
+    if (numberOfComments < 0) {
+      numberOfComments = 0;
+    }
+    return numberOfComments;
   }
 }
