@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="style.css">
 <script src="script.js"></script>
 
-<body onload="getComments()">
+<body onload="getComments(5)">
 	<div id="nav-bar">
 		<nav>
 			<ul>
@@ -66,14 +66,30 @@
 					as pause, play, volume up/down, skip, and previous.
 			</ul>
 		</p>
-		<div id="comments-container"> </div>
-	</div>
+  </div>
+  <div id="content">
+    <h3> Leave a comment here! </h3>
+    <div id="comments-container"> </div>
+      <form action="/data" method="POST">
+        <p> Number of comments to display:
+        <select name="maxComments" onchange="getComments(this.value)">
+          <option value="0">0</option>
+          <option value="5" selected>5</option>
+          <option value="10">10</option>
+          <option value="20">20</option>
+        </select>
+        <textarea name="text-input" placeholder="Enter your comment"></textarea>
+        <input type="submit"/>
+      </form>
+      <button id="delete-button" onclick="deleteComments()"> Delete </button>
+    </div>
+  </div>
 </body>
 <footer id="info-footer">
 	<a href="https://www.linkedin.com/in/thomas-quintanilla">
 		<img id = "footer-image" alt="https://www.linkedin.com/in/thomas-quintanilla/" src="/images/linkedin_logo.png" width="64" height="64">
     </a>
-		<a href="https://github.com/ThomasQuesadilla">
-			<img id = "footer-image" alt="https://www.linkedin.com/in/thomas-quintanilla/" src="/images/github_logo.png" width="64" height="64">
-    </a>
+  <a href="https://github.com/ThomasQuesadilla">
+    <img id = "footer-image" alt="https://www.linkedin.com/in/thomas-quintanilla/" src="/images/github_logo.png" width="64" height="64">
+  </a>
 </footer>

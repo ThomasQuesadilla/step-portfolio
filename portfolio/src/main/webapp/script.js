@@ -12,13 +12,31 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-/**
- * Adds a random greeting to the page.
- */
-function getComments() {
-  fetch('/data').then(response => response.json()).then(comments => {
+/*Pulls comments and adds html/styling elements to display*/
+function getComments(maxComments) {
+  const url = "/data?maxComments=" + maxComments;
+  fetch(url).then(response => response.json()).then(comments => {
 
     const commentContainer = document.getElementById('comments-container');
-    commentContainer.innerHTML = comments[0] + "<br>" + comments[1] + "<br>" + comments[2];
+    commentContainer.innerHTML = '';
+    comments.forEach(comment => {
+      commentContainer.appendChild(createCommentElement(comment));
+    })
   });
+}
+
+function createCommentElement(comment) {
+  const commentElement = document.createElement('li');
+  commentElement.id = 'comment';
+
+  const messageElement = document.createElement('span');
+  messageElement.innerHTML = comment.message;
+
+  commentElement.appendChild(messageElement);
+  return commentElement
+}
+
+function deleteComments() {
+  const request = new Request('/delete-data', {method:'POST'})
+  fetch(request).then(getComments(0));
 }
