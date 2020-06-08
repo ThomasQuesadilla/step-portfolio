@@ -37,6 +37,13 @@ function createCommentElement(comment) {
 }
 
 function deleteComments() {
-  const request = new Request('/delete-data', {method:'POST'})
+  const request = new Request('/delete-data', { method: 'POST' })
   fetch(request).then(getComments(0));
+}
+
+function createMap() {
+  console.log("reached here");
+  const map = new google.maps.Map(
+      document.getElementById('map'),
+      {center: {lat: 20.0321, lng: -80.2627}, zoom: 16});
 }
