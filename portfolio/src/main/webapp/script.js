@@ -37,6 +37,6 @@ function createCommentElement(comment) {
 }
 
 function deleteComments() {
-  const request = new Request('/delete-data', {method:'POST'})
+  const request = new Request('/delete-data', { method: 'POST' })
   fetch(request).then(getComments(0));
 }

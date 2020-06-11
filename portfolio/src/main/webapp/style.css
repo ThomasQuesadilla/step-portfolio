@@ -1,12 +1,12 @@
 body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  color: rgb(240, 240, 240);
   background-size: cover;
   height: 100%;
   background-repeat: no-repeat;
 }
 
 #nav-bar ul {
+  color: rgb(240, 240, 240);
   margin: 0;
   padding: 0;
   top: 0;
@@ -56,6 +56,7 @@ body {
 }
 
 #content {
+  color: rgb(240, 240, 240);
   width: 810px;
   border: 1px solid black;
   padding-left: 50px;
@@ -123,4 +124,10 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+#map {
+  border: thin solid black;
+  height: 500px;
+  width: 500px;
 }

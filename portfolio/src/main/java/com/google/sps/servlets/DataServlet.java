@@ -29,7 +29,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.Arrays;
-/** Servlet that returns some example content. TODO: modify this file to handle comments data */
+
+/** Servlet to handle retrieval from and pass to comments **/
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
   private final static int DEFAULT_NUMBER_OF_COMMENTS = 10;
@@ -88,7 +89,7 @@ public class DataServlet extends HttpServlet {
   }
 
   private int getMaxCommentChoice(HttpServletRequest request) {
-    String numberChoice = request.getParameter("maxComments");
+    String numberChoice = request.getParameter("max-comments");
     int numberOfComments = DEFAULT_NUMBER_OF_COMMENTS;
     try {
       numberOfComments = Integer.parseInt(numberChoice);
