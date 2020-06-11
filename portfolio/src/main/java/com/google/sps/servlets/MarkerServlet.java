@@ -32,18 +32,16 @@ public class MarkerServlet extends HttpServlet {
     response.setContentType("application/json");
 
     Collection<Marker> markers = getMarkers();
-    Gson gson = new Gson();
-    String json = gson.toJson(markers);
 
-    response.getWriter().println(json);
+    response.getWriter().println(new Gson().toJson(markers));
   }
 
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    double lat = Double.parseDouble(request.getParameter("lat"));
-    double lng = Double.parseDouble(request.getParameter("lng"));
+    double latitude = Double.parseDouble(request.getParameter("latitude"));
+    double longitude = Double.parseDouble(request.getParameter("longitude"));
     String content = Jsoup.clean(request.getParameter("content"), Whitelist.none());
-    Marker marker = new Marker(lat, lng, content);
+    Marker marker = new Marker(latitude, longitude, content);
     storeMarker(marker);
   }
 
@@ -53,11 +51,11 @@ public class MarkerServlet extends HttpServlet {
     PreparedQuery results = datastore.prepare(query);
 
     for (Entity entity : results.asIterable()) {
-      double lat = (double) entity.getProperty("lat");
-      double lng = (double) entity.getProperty("lng");
+      double latitude = (double) entity.getProperty("latitude");
+      double longitude = (double) entity.getProperty("longitude");
       String content = (String) entity.getProperty("content");
 
-      Marker marker = new Marker(lat, lng, content);
+      Marker marker = new Marker(latitude, longitude, content);
       markers.add(marker);
     }
     return markers;
@@ -66,8 +64,8 @@ public class MarkerServlet extends HttpServlet {
   /** Stores a marker in Datastore. */
   public void storeMarker(Marker marker) {
     Entity markerEntity = new Entity("Marker");
-    markerEntity.setProperty("lat", marker.getLat());
-    markerEntity.setProperty("lng", marker.getLng());
+    markerEntity.setProperty("latitude", marker.getLatitude());
+    markerEntity.setProperty("longitude", marker.getLongitude());
     markerEntity.setProperty("content", marker.getContent());
 
     datastore = DatastoreServiceFactory.getDatastoreService();

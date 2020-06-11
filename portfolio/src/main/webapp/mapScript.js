@@ -12,13 +12,12 @@
 // limitations under the License.
 
 let map;
-let editMarker
 
 function createMap() {
-  const home_coords = { lat: 26.0321, lng: -80.2627 };
+  const homeCoords = { lat: 26.0321, lng: -80.2627 };
   map = new google.maps.Map(
     document.getElementById('map'),
-    { center: home_coords, zoom: 16,
+    { center: homeCoords, zoom: 16,
     styles: [
             {elementType: 'geometry', stylers: [{color: '#242f3e'}]},
             {elementType: 'labels.text.stroke', stylers: [{color: '#242f3e'}]},
@@ -110,37 +109,38 @@ function createMap() {
 function fetchMarkers() {
   fetch('/markers').then(response => response.json()).then(markers => {
     markers.forEach(marker => {
-      createMarkerForDisplay(marker.lat, marker.lng, marker.content);
+      createMarkerForDisplay(marker.latitude, marker.longitude, marker.content);
     });
   });
 }
 
-function postMarker(lat, lng, content) {
+function postMarker(latitude, longitude, content) {
   const params = new URLSearchParams();
-  params.append('lat', lat);
-  params.append('lng', lng);
+  params.append('latitude', latitude);
+  params.append('longitude', longitude);
   params.append('content', content);
   fetch('/markers', {method: 'POST', body: params});
 }
 
-function createMarkerForDisplay(lat, lng, content) {
+function createMarkerForDisplay(latitude, longitude, content) {
   const marker =
-      new google.maps.Marker({position: {lat: lat, lng: lng}, map: map});
+      new google.maps.Marker({position: {lat: latitude, lng: longitude}, map: map});
   const infoWindow = new google.maps.InfoWindow({content: content});
   marker.addListener('click', () => {
     infoWindow.open(map, marker);
   });
 }
 
-function createMarkerForEdit(lat, lng, content) {
+let editMarker;
+function createMarkerForEdit(latitude, longitude, content) {
   if (editMarker) {
     editMarker.setMap(null);
   } 
   editMarker = 
-      new google.maps.Marker({position: {lat: lat, lng: lng}, map: map});
+      new google.maps.Marker({position: {lat: latitude, lng: longitude}, map: map});
   
   const infoWindow =
-      new google.maps.InfoWindow({content: buildInfoWindowInput(lat, lng)});
+      new google.maps.InfoWindow({content: buildInfoWindowInput(latitude, longitude)});
 
   google.maps.event.addListener(infoWindow, 'closeclick', () => {
     editMarker.setMap(null);
@@ -149,14 +149,14 @@ function createMarkerForEdit(lat, lng, content) {
   infoWindow.open(map, editMarker);
 }
 
-function buildInfoWindowInput(lat, lng) {
+function buildInfoWindowInput(latitude, longitude) {
   const textBox = document.createElement('textarea');
   const button = document.createElement('button');
   button.appendChild(document.createTextNode('Submit'));
 
   button.onclick = () => {
-    postMarker(lat, lng, textBox.value);
-    createMarkerForDisplay(lat, lng, textBox.value);
+    postMarker(latitude, longitude, textBox.value);
+    createMarkerForDisplay(latitude, longitude, textBox.value);
     editMarker.setMap(null);
   };
 

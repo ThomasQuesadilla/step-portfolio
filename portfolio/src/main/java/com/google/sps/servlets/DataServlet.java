@@ -89,7 +89,7 @@ public class DataServlet extends HttpServlet {
   }
 
   private int getMaxCommentChoice(HttpServletRequest request) {
-    String numberChoice = request.getParameter("maxComments");
+    String numberChoice = request.getParameter("max-comments");
     int numberOfComments = DEFAULT_NUMBER_OF_COMMENTS;
     try {
       numberOfComments = Integer.parseInt(numberChoice);
