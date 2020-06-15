@@ -1,20 +1,26 @@
-google.charts.load('current', {'packages':['corechart']});
-google.charts.setOnLoadCallback(drawChart);
+google.charts.load('current', {'packages':['line']});
+google.charts.setOnLoadCallback(drawStateChart);
 
-function drawChart() {
+function drawStateChart() {
+  fetch('/chart-data').then(response => response.json())
+  .then((covidCases) => {
+    buildChart(covidCases[0], "state-chart-div");
+    buildChart(covidCases[1], "county-chart-div");
+  });
+}
+
+function buildChart(dataMap, divPath) {
   const data = new google.visualization.DataTable();
-  data.addColumn('string', 'Animal');
-  data.addColumn('number', 'Count');
-  data.addRows([
-    ['Dolphins', 15],
-    ['Kangaroos', 20],
-    ['Elephants', 5]
-  ]);
+  data.addColumn('date', 'Date');
+  data.addColumn('number', 'Cases');
+  Object.keys(dataMap).forEach((day) => {
+      data.addRow([new Date(day), dataMap[day]]);
+    });
   const options = {
-    'title': 'Zoo Animals',
-    'width': 400,
-    'height': 500
+    'title': 'Daily Reported Covid Cases in Florida to June 11th',
+    'width': 700,
+    'height': 700
   };
-  const chart = new google.visualization.PieChart(document.getElementById           ('chart-container'));
+  const chart = new google.charts.Line(document.getElementById(divPath));
   chart.draw(data, options);
 }
